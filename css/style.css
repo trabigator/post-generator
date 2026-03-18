@@ -1,0 +1,469 @@
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-sidebar: #f1f3f5;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --accent-color: #4a90d9;
+    --accent-hover: #3a7bc8;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --radius: 8px;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #1a1a2e;
+    --bg-secondary: #16213e;
+    --bg-sidebar: #0f0f23;
+    --text-primary: #e9ecef;
+    --text-secondary: #adb5bd;
+    --border-color: #3a3a5c;
+    --accent-color: #6c8fd9;
+    --accent-hover: #5a7fc8;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .editor-toolbar button,
+[data-theme="dark"] .editor-toolbar i.separator {
+    color: #e9ecef;
+}
+
+.editor-toolbar button.active {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.CodeMirror-line::selection,
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection,
+.CodeMirror-line::-selection,
+.CodeMirror-line > span::-selection,
+.CodeMirror-line > span > span::-selection {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+[data-theme="dark"] .CodeMirror-cursor {
+    border-left-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+}
+
+.btn-icon:hover {
+    background: var(--border-color);
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 300px;
+    padding: 1.5rem;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.625rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.9375rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input[type="date"],
+.form-group input[type="time"] {
+    cursor: pointer;
+    color-scheme: light dark;
+}
+
+[data-theme="dark"] .form-group input[type="date"],
+[data-theme="dark"] .form-group input[type="time"] {
+    color-scheme: dark;
+}
+
+.time-input-wrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.time-input-wrapper input[type="time"] {
+    flex: 1;
+}
+
+.btn-small {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8125rem;
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-small:hover {
+    background: var(--text-secondary);
+    color: white;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 217, 0.15);
+}
+
+.form-group textarea {
+    resize: vertical;
+    font-family: inherit;
+}
+
+.tag-history {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+
+.tag-history-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+.tag-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.tag-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0.15rem 0.5rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    color: var(--text-primary);
+    user-select: none;
+}
+
+.tag-chip:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.tag-chip:hover .tag-chip-remove {
+    color: white;
+}
+
+.tag-chip-remove {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-left: 0.1rem;
+    line-height: 1;
+    padding: 0 0.1rem;
+}
+
+.tag-chip-remove:hover {
+    color: var(--error-color);
+}
+
+
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+.actions .btn-primary {
+    width: 100%;
+}
+
+.actions .btn-secondary,
+.actions .btn-danger {
+    flex: 1;
+    width: calc(50% - 0.375rem);
+}
+
+.actions .btn-primary + .btn-secondary,
+.actions .btn-primary + .btn-danger {
+    margin-top: 0.5rem;
+}
+
+.actions .button-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.actions .button-row .btn-secondary,
+.actions .button-row .btn-danger {
+    flex: 1;
+    width: auto;
+    margin-top: 0;
+}
+
+.btn {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+}
+
+.btn-secondary {
+    background: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--text-secondary);
+    color: white;
+}
+
+.btn-danger {
+    background: transparent;
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.btn-danger:hover {
+    background: var(--error-color);
+    color: white;
+}
+
+.editor-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.editor-section .EasyMDEContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.editor-section .editor-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    flex-shrink: 0;
+}
+
+.editor-section .CodeMirror {
+    flex: 1;
+    font-size: 0.9375rem;
+}
+
+.CodeMirror-cursor {
+    border-left-color: #000000;
+}
+
+.editor-section .EasyMDEContainer .editor-preview {
+    padding: 1rem;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: var(--bg-primary);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 800px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-header h2 {
+    font-size: 1.125rem;
+}
+
+#output-preview {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem 1.5rem;
+    background: var(--bg-secondary);
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    justify-content: flex-end;
+}
+
+.modal-small {
+    max-width: 400px;
+}
+
+.confirm-text {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        max-height: 40vh;
+    }
+}
+
+.editor-section .CodeMirror.CodeMirror {
+    --selection-bg: #3a3a5c;
+    --selection-color: #ffffff;
+}
+
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line::selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line > span::selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line > span > span::selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line::-moz-selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line > span::-moz-selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line > span > span::-moz-selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line span::selection,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-line span::-moz-selection {
+    background-color: var(--selection-bg, #3a3a5c) !important;
+    color: var(--selection-color, #ffffff) !important;
+}
+
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-selected,
+[data-theme="dark"] .editor-section .CodeMirror .CodeMirror-selectedtext {
+    background-color: var(--selection-bg, #3a3a5c) !important;
+    color: var(--selection-color, #ffffff) !important;
+}

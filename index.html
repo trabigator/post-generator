@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Generator</title>
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/easymde.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Post Generator</h1>
+            <button id="theme-toggle" class="btn-icon" title="Toggle theme">
+                <span class="icon">🌙</span>
+            </button>
+        </header>
+        
+        <main class="main">
+            <aside class="sidebar">
+                <div class="form-group">
+                    <label for="title">Title *</label>
+                    <input type="text" id="title" placeholder="Enter post title" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="teaser">Teaser</label>
+                    <textarea id="teaser" rows="3" placeholder="Brief description for preview"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="date-input">Date</label>
+                    <input type="date" id="date-input">
+                </div>
+                
+                <div class="form-group time-group">
+                    <label for="time-input">Time</label>
+                    <div class="time-input-wrapper">
+                        <input type="time" id="time-input">
+                        <button type="button" id="now-btn" class="btn btn-small">Now</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input type="text" id="tags" placeholder="tag1, tag2, tag3">
+                    <div class="tag-history" id="tag-history" style="display:none">
+                        <span class="tag-history-label">Recent:</span>
+                        <div class="tag-chips" id="tag-chips"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Read Time</label>
+                    <div id="read-time" class="read-time-display">— min read</div>
+                </div>
+                
+                <div class="actions">
+                    <button id="generate-btn" class="btn btn-primary">Generate Post</button>
+                    <div class="button-row">
+                        <button id="download-btn" class="btn btn-secondary">Download .md</button>
+                        <button id="reset-btn" class="btn btn-danger">Clear Form</button>
+                    </div>
+                </div>
+            </aside>
+            
+            <section class="editor-section">
+                <textarea id="editor"></textarea>
+            </section>
+        </main>
+        
+        <div id="output-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Generated Post</h2>
+                    <button id="close-modal" class="btn-icon">&times;</button>
+                </div>
+                <pre id="output-preview"></pre>
+                <div class="modal-actions">
+                    <button id="copy-btn" class="btn btn-secondary">Copy to Clipboard</button>
+                    <button id="download-modal-btn" class="btn btn-primary">Download</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="confirm-modal" class="modal hidden">
+            <div class="modal-content modal-small">
+                <div class="modal-header">
+                    <h2>Clear Form</h2>
+                    <button id="close-confirm" class="btn-icon">&times;</button>
+                </div>
+                <p class="confirm-text">Clear all fields? This cannot be undone.</p>
+                <div class="modal-actions">
+                    <button id="cancel-btn" class="btn btn-secondary">Cancel</button>
+                    <button id="confirm-btn" class="btn btn-danger">Clear</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="error-modal" class="modal hidden">
+            <div class="modal-content modal-small">
+                <div class="modal-header">
+                    <h2>Error</h2>
+                    <button id="close-error" class="btn-icon">&times;</button>
+                </div>
+                <p id="error-message" class="confirm-text"></p>
+                <div class="modal-actions">
+                    <button id="error-ok-btn" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/codemirror.js"></script>
+    <script src="js/markdown.js"></script>
+    <script src="js/javascript.js"></script>
+    <script src="js/easymde.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
